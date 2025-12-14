@@ -12,9 +12,7 @@ html { scroll-behavior: smooth; }
 body { padding-top: 56px; }
 
 .banner {
-  background-image: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f");
-  background-size: cover;
-  background-position: center;
+  background: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f") center/cover;
   height: 300px;
   color: white;
 }
@@ -46,7 +44,7 @@ body { padding-top: 56px; }
 
 <!-- BANNER -->
 <div class="banner">
-  <div class="banner-overlay">
+  <div class="banner-overlay text-center">
     <h1 class="fw-bold">SHOP QUẦN ÁO ONLINE</h1>
     <p>Thời trang – Tiện lợi – Nhanh chóng</p>
   </div>
@@ -54,8 +52,8 @@ body { padding-top: 56px; }
 
 <div class="container mt-5">
 
+<!-- SẢN PHẨM -->
 <h2 id="sanpham" class="text-center mb-4">DANH SÁCH SẢN PHẨM</h2>
-
 <div class="row g-4">
 
 <!-- ÁO THUN -->
@@ -122,6 +120,7 @@ body { padding-top: 56px; }
 
 <hr class="my-4">
 
+<!-- GIỎ HÀNG -->
 <h3 id="giohang">🛒 Giỏ hàng</h3>
 
 <table class="table table-bordered">
@@ -140,6 +139,7 @@ body { padding-top: 56px; }
 <h4>Tổng tiền: <span id="total">0</span> VNĐ</h4>
 <button class="btn btn-success mb-4" onclick="showCheckout()">🧾 Mua & Thanh toán</button>
 
+<!-- THANH TOÁN -->
 <div id="checkout" style="display:none;">
 <h3>🧍 Thông tin thanh toán</h3>
 <input class="form-control mb-2" id="name" placeholder="Họ và tên">
@@ -151,22 +151,79 @@ body { padding-top: 56px; }
 
 <hr class="my-4">
 
+<!-- LIÊN HỆ -->
 <h3 id="lienhe">📞 Liên hệ</h3>
 <p>Email: <b>Maithinh131205@gmail.com</b></p>
 <p>SĐT: <b>0789423780</b></p>
 
 <hr class="my-4">
 
-<hr class="my-4">
-
+<!-- KẾT THÚC -->
 <div class="text-center mb-4">
-  <p><b>Môn học:</b> Thương Mại Điện Tử</p>
-  <p><b>Giáo viên:</b> Vũ Thị Nữ</p>
-
-  <h4 class="mt-3">❤ Nhóm 4 Thương Mại Điện Tử</h4>
-  <p>
-    Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Phan Ngọc Nhi, Nguyễn Thanh Phúc,
-    Huỳnh Thảo Ny, Trần Thị Như Ý, Trần Ngọc Mỹ Chi,
-    Nguyễn Đăng Khoa, Đặng Anh Quyền, Nguyễn Quang Vinh Quang Vinh, Nguyễn Lê Thi
-  </p>
+<p><b>Môn học:</b> Thương Mại Điện Tử</p>
+<p><b>Giáo viên:</b> Vũ Thị Nữ</p>
+<h4 class="mt-3">❤ Nhóm 4 Thương Mại Điện Tử</h4>
+<p> Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Phan Ngọc Nhi, Nguyễn Thanh Phúc, Huỳnh Thảo Ny, Trần Thị Như Ý, Trần Ngọc Mỹ Chi, Nguyễn Đăng Khoa, Đặng Anh Quyền, Nguyễn Quang Vinh Quang Vinh, Nguyễn Lê Thi </p>
 </div>
+
+</div>
+
+<script>
+let cart = {};
+
+function addItem(name, price) {
+  if (cart[name]) cart[name].qty++;
+  else cart[name] = { price, qty: 1 };
+  renderCart();
+}
+
+function removeItem(name) {
+  delete cart[name];
+  renderCart();
+}
+
+function renderCart() {
+  let html = "", total = 0;
+  for (let name in cart) {
+    let item = cart[name];
+    let sub = item.price * item.qty;
+    total += sub;
+    html += `<tr>
+      <td>${name}</td>
+      <td>${item.price.toLocaleString()} VNĐ</td>
+      <td>${item.qty}</td>
+      <td>${sub.toLocaleString()} VNĐ</td>
+      <td><button class="btn btn-danger btn-sm" onclick="removeItem('${name}')">Xóa</button></td>
+    </tr>`;
+  }
+  document.getElementById("cart").innerHTML = html;
+  document.getElementById("total").innerText = total.toLocaleString();
+}
+
+function showCheckout() {
+  if (Object.keys(cart).length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+  document.getElementById("checkout").style.display = "block";
+}
+
+function submitOrder() {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if (!name || !phone || !address) {
+    alert("Vui lòng nhập đầy đủ thông tin!");
+    return;
+  }
+
+  alert("🎉 Đặt hàng thành công!");
+  cart = {};
+  renderCart();
+  document.getElementById("checkout").style.display = "none";
+}
+</script>
+
+</body>
+</html>

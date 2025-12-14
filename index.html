@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Website TMĐT</title>
+<style>
+body{font-family:Arial;margin:0}
+nav{background:#34495e;padding:15px}
+nav a{color:#fff;margin-right:20px;text-decoration:none}
+.container{padding:20px}
+.products{display:flex;gap:20px}
+.product{border:1px solid #ccc;padding:15px;width:200px;text-align:center}
+button{padding:6px 10px;margin-top:10px}
+.cart{margin-top:30px;border-top:2px solid #000;padding-top:15px}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#">Trang chủ</a>
+<a href="#">Sản phẩm</a>
+<a href="#">Giỏ hàng</a>
+<a href="#">Liên hệ</a>
+</nav>
+
+<div class="container">
+<h2>Sản phẩm</h2>
+
+<div class="products">
+<div class="product">
+<h3>Áo thun</h3>
+<p>150.000 VNĐ</p>
+<button onclick="add('Áo thun',150000)">Thêm vào giỏ</button>
+</div>
+
+<div class="product">
+<h3>Quần jean</h3>
+<p>300.000 VNĐ</p>
+<button onclick="add('Quần jean',300000)">Thêm vào giỏ</button>
+</div>
+
+<div class="product">
+<h3>Giày thể thao</h3>
+<p>500.000 VNĐ</p>
+<button onclick="add('Giày thể thao',500000)">Thêm vào giỏ</button>
+</div>
+</div>
+
+<div class="cart">
+<h2>Giỏ hàng</h2>
+<ul id="cart"></ul>
+<h3>Tổng tiền: <span id="total">0</span> VNĐ</h3>
+</div>
+</div>
+
+<script>
+let total=0;
+function add(name,price){
+let li=document.createElement("li");
+li.innerText=name+" - "+price.toLocaleString()+" VNĐ";
+document.getElementById("cart").appendChild(li);
+total+=price;
+document.getElementById("total").innerText=total.toLocaleString();
+}
+</script>
+
+</body>
+</html>

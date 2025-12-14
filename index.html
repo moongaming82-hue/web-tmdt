@@ -157,150 +157,16 @@ body { padding-top: 56px; }
 
 <hr class="my-4">
 
-<p><b>Môn học:</b> Thương Mại Điện Tử</p>
-<p><b>Giáo viên:</b> Vũ Thị Nữ</p>
+<hr class="my-4">
 
-<h3>❤ Nhóm 4 Thương Mại Điện Tử</h3>
-;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-</style>
-</head>
+<div class="text-center mb-4">
+  <p><b>Môn học:</b> Thương Mại Điện Tử</p>
+  <p><b>Giáo viên:</b> Vũ Thị Nữ</p>
 
-<body>
-
-<!-- MENU -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Shop Quần Áo</a>
-    <div class="navbar-nav">
-      <a class="nav-link" href="#sanpham">Sản phẩm</a>
-      <a class="nav-link" href="#giohang">Giỏ hàng</a>
-      <a class="nav-link" href="#lienhe">Liên hệ</a>
-    </div>
-  </div>
-</nav>
-
-<!-- BANNER -->
-<div class="banner">
-  <div class="banner-overlay">
-    <h1 class="fw-bold">SHOP QUẦN ÁO ONLINE</h1>
-    <p>Thời trang – Tiện lợi – Nhanh chóng</p>
-  </div>
+  <h4 class="mt-3">❤ Nhóm 4 Thương Mại Điện Tử</h4>
+  <p>
+    Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Phan Ngọc Nhi, Nguyễn Thanh Phúc,
+    Huỳnh Thảo Ny, Trần Thị Như Ý, Trần Ngọc Mỹ Chi,
+    Nguyễn Đăng Khoa, Đặng Anh Quyền, Nguyễn Quang Vinh Quang Vinh, Nguyễn Lê Thi
+  </p>
 </div>
-
-<div class="container mt-5">
-
-<h2 id="sanpham" class="text-center mb-4">DANH SÁCH SẢN PHẨM</h2>
-
-<div class="row g-4">
-
-<!-- ÁO THUN -->
-<div class="col-md-4">
-<div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" class="card-img-top">
-<div class="card-body">
-<h5>Áo thun</h5>
-<p>150.000 VNĐ</p>
-<button class="btn btn-primary" onclick="addItem('Áo thun',150000)">Thêm vào giỏ</button>
-</div></div></div>
-
-<!-- ÁO SƠ MI -->
-<div class="col-md-4">
-<div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10" class="card-img-top">
-<div class="card-body">
-<h5>Áo sơ mi</h5>
-<p>220.000 VNĐ</p>
-<button class="btn btn-primary" onclick="addItem('Áo sơ mi',220000)">Thêm vào giỏ</button>
-</div></div></div>
-
-<!-- ÁO ĐÁ BANH -->
-<div class="col-md-4">
-<div class="card h-100 text-center">
-<img src="https://product.hstatic.net/200000293662/product/1_b3c6e6290eb64355b9ddb40a4e0b16e5_large.jpg" class="card-img-top">
-<div class="card-body">
-<h5>Áo đá banh</h5>
-<p>180.000 VNĐ</p>
-<button class="btn btn-primary" onclick="addItem('Áo đá banh',180000)">Thêm vào giỏ</button>
-</div></div></div>
-
-<!-- QUẦN JEAN -->
-<div class="col-md-4">
-<div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1542272604-787c3835535d" class="card-img-top">
-<div class="card-body">
-<h5>Quần jean</h5>
-<p>300.000 VNĐ</p>
-<button class="btn btn-primary" onclick="addItem('Quần jean',300000)">Thêm vào giỏ</button>
-</div></div></div>
-
-<!-- QUẦN KAKI -->
-<div class="col-md-4">
-<div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80" class="card-img-top">
-<div class="card-body">
-<p><i>(Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Huỳnh Thảo Ny, Nguyễn Thanh Phúc, Nguyễn Đăng Khoa, Phan Ngọc Nhi, Trần Thị Như Ý, Nguyễn Quang Vinh, Nguyễn Lê Thi, Đặng Anh Quyền, Trần Ngọc Mỹ Chi
-
-</div>
-
-<script>
-let cart = {};
-
-function addItem(name, price) {
-  if (cart[name]) cart[name].qty++;
-  else cart[name] = { price, qty: 1 };
-  renderCart();
-}
-
-function removeItem(name) {
-  delete cart[name];
-  renderCart();
-}
-
-function renderCart() {
-  let html = "";
-  let total = 0;
-  for (let name in cart) {
-    let item = cart[name];
-    let sub = item.price * item.qty;
-    total += sub;
-    html += `<tr>
-      <td>${name}</td>
-      <td>${item.price.toLocaleString()} VNĐ</td>
-      <td>${item.qty}</td>
-      <td>${sub.toLocaleString()} VNĐ</td>
-      <td><button class="btn btn-danger btn-sm" onclick="removeItem('${name}')">Xóa</button></td>
-    </tr>`;
-  }
-  document.getElementById("cart").innerHTML = html;
-  document.getElementById("total").innerText = total.toLocaleString();
-}
-
-function showCheckout() {
-  if (Object.keys(cart).length === 0) {
-    alert("Giỏ hàng đang trống!");
-    return;
-  }
-  document.getElementById("checkout").style.display = "block";
-}
-
-function submitOrder() {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  if (!name || !phone || !address) {
-    alert("Vui lòng nhập đầy đủ thông tin!");
-    return;
-  }
-  alert("🎉 Đặt hàng thành công!");
-  cart = {};
-  renderCart();
-  document.getElementById("checkout").style.display = "none";
-}
-</script>
-
-</body>
-</html>

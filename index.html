@@ -24,35 +24,38 @@
 
   <div class="row g-4">
 
+    <!-- SẢN PHẨM 1 -->
     <div class="col-md-4">
       <div class="card h-100">
         <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" class="card-img-top">
         <div class="card-body text-center">
-          <h5 class="card-title">Áo thun</h5>
-          <p class="card-text">150.000 VNĐ</p>
-          <button class="btn btn-primary" onclick="add('Áo thun',150000)">Thêm vào giỏ</button>
+          <h5>Áo thun</h5>
+          <p>150.000 VNĐ</p>
+          <button class="btn btn-primary" onclick="addItem('Áo thun',150000)">Thêm vào giỏ</button>
         </div>
       </div>
     </div>
 
+    <!-- SẢN PHẨM 2 -->
     <div class="col-md-4">
       <div class="card h-100">
         <img src="https://images.unsplash.com/photo-1542272604-787c3835535d" class="card-img-top">
         <div class="card-body text-center">
-          <h5 class="card-title">Quần jean</h5>
-          <p class="card-text">300.000 VNĐ</p>
-          <button class="btn btn-primary" onclick="add('Quần jean',300000)">Thêm vào giỏ</button>
+          <h5>Quần jean</h5>
+          <p>300.000 VNĐ</p>
+          <button class="btn btn-primary" onclick="addItem('Quần jean',300000)">Thêm vào giỏ</button>
         </div>
       </div>
     </div>
 
+    <!-- SẢN PHẨM 3 -->
     <div class="col-md-4">
       <div class="card h-100">
         <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" class="card-img-top">
         <div class="card-body text-center">
-          <h5 class="card-title">Giày thể thao</h5>
-          <p class="card-text">500.000 VNĐ</p>
-          <button class="btn btn-primary" onclick="add('Giày thể thao',500000)">Thêm vào giỏ</button>
+          <h5>Giày thể thao</h5>
+          <p>500.000 VNĐ</p>
+          <button class="btn btn-primary" onclick="addItem('Giày thể thao',500000)">Thêm vào giỏ</button>
         </div>
       </div>
     </div>
@@ -61,19 +64,62 @@
 
   <hr class="my-4">
 
+  <!-- GIỎ HÀNG -->
   <h3>🛒 Giỏ hàng</h3>
-  <ul id="cart" class="list-group mb-3"></ul>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+    <tbody id="cart"></tbody>
+  </table>
+
   <h4>Tổng tiền: <span id="total">0</span> VNĐ</h4>
 </div>
 
 <script>
-let total = 0;
-function add(name, price) {
-  let li = document.createElement("li");
-  li.className = "list-group-item";
-  li.innerText = name + " - " + price.toLocaleString() + " VNĐ";
-  document.getElementById("cart").appendChild(li);
-  total += price;
+let cart = {};
+
+function addItem(name, price) {
+  if (cart[name]) {
+    cart[name].qty++;
+  } else {
+    cart[name] = { price: price, qty: 1 };
+  }
+  renderCart();
+}
+
+function removeItem(name) {
+  delete cart[name];
+  renderCart();
+}
+
+function renderCart() {
+  let cartTable = document.getElementById("cart");
+  cartTable.innerHTML = "";
+  let total = 0;
+
+  for (let name in cart) {
+    let item = cart[name];
+    let subTotal = item.price * item.qty;
+    total += subTotal;
+
+    cartTable.innerHTML += `
+      <tr>
+        <td>${name}</td>
+        <td>${item.price.toLocaleString()} VNĐ</td>
+        <td>${item.qty}</td>
+        <td>${subTotal.toLocaleString()} VNĐ</td>
+        <td><button class="btn btn-danger btn-sm" onclick="removeItem('${name}')">Xóa</button></td>
+      </tr>
+    `;
+  }
+
   document.getElementById("total").innerText = total.toLocaleString();
 }
 </script>

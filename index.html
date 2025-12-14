@@ -157,6 +157,38 @@ body {
 </table>
 
 <h4>Tổng tiền: <span id="total">0</span> VNĐ</h4>
+<button class="btn btn-success mb-4" onclick="showCheckout()">
+  🧾 Mua & Thanh toán
+</button>
+
+<!-- FORM THANH TOÁN -->
+<div id="checkout" style="display:none;">
+  <h3>🧍 Thông tin thanh toán</h3>
+
+  <div class="mb-2">
+    <input type="text" id="name" class="form-control" placeholder="Họ và tên">
+  </div>
+
+  <div class="mb-2">
+    <input type="tel" id="phone" class="form-control" placeholder="Số điện thoại">
+  </div>
+
+  <div class="mb-2">
+    <input type="email" id="email" class="form-control" placeholder="Email">
+  </div>
+
+  <div class="mb-2">
+    <input type="text" id="address" class="form-control" placeholder="Địa chỉ giao hàng">
+  </div>
+
+  <div class="mb-3">
+    <textarea id="note" class="form-control" placeholder="Ghi chú"></textarea>
+  </div>
+
+  <button class="btn btn-primary" onclick="submitOrder()">
+    ✅ Xác nhận đặt hàng
+  </button>
+</div>
 
 <hr class="my-4">
 
@@ -172,7 +204,31 @@ body {
 <p><i>(Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Phan Ngọc Nhi, Nguyễn Thanh Phúc, Huỳnh Thảo Ny, Nguyễn Thị Như Ý, Trần Ngọc Mỹ Chi, Nguyễn Đăng Khoa, Đặng Anh Quyền, Lê Quang Vinh, Nguyễn Lê Thi)</i></p>
 
 </div>
+function showCheckout() {
+  if (Object.keys(cart).length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+  document.getElementById("checkout").style.display = "block";
+}
 
+function submitOrder() {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if (!name || !phone || !address) {
+    alert("Vui lòng nhập đầy đủ thông tin!");
+    return;
+  }
+
+  alert("🎉 Đặt hàng thành công! Cảm ơn bạn đã mua hàng.");
+
+  cart = {};
+  renderCart();
+  document.getElementById("checkout").style.display = "none";
+}
+  
 <script>
 let cart = {};
 

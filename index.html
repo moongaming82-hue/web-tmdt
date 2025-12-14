@@ -2,35 +2,43 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Website TMĐT</title>
+<title>Shop Quần Áo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 56px;
+}
+
 .banner {
-  background-image: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f');
+  background-image: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f");
   background-size: cover;
   background-position: center;
   height: 300px;
   color: white;
-  display: flex;
-  align-items: center;
-  text-align: center;
 }
+
 .banner-overlay {
-  background: rgba(0,0,0,0.55);
-  width: 100%;
+  background: rgba(0,0,0,0.6);
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 </style>
 </head>
+
 <body>
 
 <!-- MENU -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">Shop Quần Áo</a>
     <div class="navbar-nav">
@@ -49,68 +57,92 @@
   </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-5">
 
-<!-- SẢN PHẨM -->
-<h2 id="sanpham" class="text-center mb-4">Danh sách sản phẩm</h2>
+<!-- ================= SẢN PHẨM ================= -->
+<h2 id="sanpham" class="text-center mb-4">DANH SÁCH SẢN PHẨM</h2>
+
 <div class="row g-4">
 
-<!-- ÁO -->
-<div class="col-md-4"><div class="card h-100 text-center">
+<!-- ÁO THUN -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
 <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" class="card-img-top">
 <div class="card-body">
 <h5>Áo thun</h5>
 <p>150.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Áo thun',150000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
-<div class="col-md-4"><div class="card h-100 text-center">
+<!-- ÁO SƠ MI -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
 <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10" class="card-img-top">
 <div class="card-body">
 <h5>Áo sơ mi</h5>
 <p>220.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Áo sơ mi',220000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
-<div class="col-md-4"><div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1607346256330-dee7af15f7c5" class="card-img-top">
+<!-- ÁO ĐÁ BANH (ĐÃ SỬA ẢNH) -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
+<img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d" class="card-img-top">
 <div class="card-body">
 <h5>Áo đá banh</h5>
 <p>180.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Áo đá banh',180000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
-<!-- QUẦN -->
-<div class="col-md-4"><div class="card h-100 text-center">
+<!-- QUẦN JEAN -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
 <img src="https://images.unsplash.com/photo-1542272604-787c3835535d" class="card-img-top">
 <div class="card-body">
 <h5>Quần jean</h5>
 <p>300.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Quần jean',300000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
-<div class="col-md-4"><div class="card h-100 text-center">
+<!-- QUẦN KAKI -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
 <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80" class="card-img-top">
 <div class="card-body">
 <h5>Quần kaki</h5>
 <p>280.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Quần kaki',280000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
-<div class="col-md-4"><div class="card h-100 text-center">
-<img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b" class="card-img-top">
+<!-- QUẦN SHORT THỂ THAO (ĐÃ SỬA ẢNH) -->
+<div class="col-md-4">
+<div class="card h-100 text-center">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6" class="card-img-top">
 <div class="card-body">
 <h5>Quần short thể thao</h5>
 <p>160.000 VNĐ</p>
 <button class="btn btn-primary" onclick="addItem('Quần short thể thao',160000)">Thêm vào giỏ</button>
-</div></div></div>
+</div>
+</div>
+</div>
 
 </div>
 
 <hr class="my-4">
 
-<!-- GIỎ HÀNG -->
+<!-- ================= GIỎ HÀNG ================= -->
 <h3 id="giohang">🛒 Giỏ hàng</h3>
+
 <table class="table table-bordered">
 <thead>
 <tr>
@@ -123,20 +155,21 @@
 </thead>
 <tbody id="cart"></tbody>
 </table>
+
 <h4>Tổng tiền: <span id="total">0</span> VNĐ</h4>
 
 <hr class="my-4">
 
-<!-- LIÊN HỆ -->
+<!-- ================= LIÊN HỆ ================= -->
 <h3 id="lienhe">📞 Liên hệ</h3>
 <p>Email: <b>Maithinh131205@gmail.com</b></p>
 <p>SĐT: <b>0789423780</b></p>
 
 <hr class="my-4">
 
-<!-- NỘI DUNG NHẬP SAU -->
-<h3>📝 Nội dung đặt hàng</h3>
-<p><i>(Bạn sẽ nhập nội dung ở đây sau)</i></p>
+<!-- NỘI DUNG BẠN SẼ THÊM SAU -->
+<h3>❤ Nhóm 4 Thương Mại Điện Tử</h3>
+<p><i>(Mai Lê Quốc Thịnh, Nguyễn Tấn Pha, Phan Ngọc Nhi, Nguyễn Thanh Phúc, Huỳnh Thảo Ny, Nguyễn Thị Như Ý, Trần Ngọc Mỹ Chi, Nguyễn Đăng Khoa, Đặng Anh Quyền, Lê Quang Vinh, Nguyễn Lê Thi)</i></p>
 
 </div>
 
@@ -144,8 +177,11 @@
 let cart = {};
 
 function addItem(name, price) {
-  if (cart[name]) cart[name].qty++;
-  else cart[name] = { price: price, qty: 1 };
+  if (cart[name]) {
+    cart[name].qty++;
+  } else {
+    cart[name] = { price: price, qty: 1 };
+  }
   renderCart();
 }
 
@@ -164,13 +200,17 @@ function renderCart() {
     total += sub;
 
     html += `
-      <tr>
-        <td>${name}</td>
-        <td>${item.price.toLocaleString()} VNĐ</td>
-        <td>${item.qty}</td>
-        <td>${sub.toLocaleString()} VNĐ</td>
-        <td><button class="btn btn-danger btn-sm" onclick="removeItem('${name}')">Xóa</button></td>
-      </tr>`;
+    <tr>
+      <td>${name}</td>
+      <td>${item.price.toLocaleString()} VNĐ</td>
+      <td>${item.qty}</td>
+      <td>${sub.toLocaleString()} VNĐ</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="removeItem('${name}')">
+          Xóa
+        </button>
+      </td>
+    </tr>`;
   }
 
   document.getElementById("cart").innerHTML = html;
